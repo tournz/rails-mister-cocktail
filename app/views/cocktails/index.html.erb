@@ -1,7 +1,19 @@
-<h1>Cocktails</h1>
+<div class="navbar">
+  <div class="container">
+    <h1>Cocktails</h1>
+    <%= link_to "Add a cocktail", new_cocktail_path, class: "btn btn-light" %>
+  </div>
+</div>
 
-<% @cocktails.each do |cocktail| %>
-  <%= link_to cocktail.name, cocktail_path(cocktail)  %>
-<% end %>
-
-<%= link_to "Add a cocktail", new_cocktail_path %>
+<div class="container">
+  <div class="cards">
+    <% @cocktails.each do |cocktail| %>
+      <div class="card-cocktail">
+        <%= link_to cocktail_path(cocktail) do %>
+          <h2 class="centered"><%= cocktail.name %></h2>
+          <%= image_tag "#{cocktail.name.split[0].downcase}_#{cocktail.name.split[1].downcase}.png", alt: "Cocktail" %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
