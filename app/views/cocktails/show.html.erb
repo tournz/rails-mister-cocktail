@@ -1,11 +1,43 @@
-<h1><%= @cocktail.name %></h1>
-<% unless @cocktail.doses.nil? %>
-  <ol>
-    <% @cocktail.doses.each do |dose| %>
-      <li><%= dose.description %> of <%= dose.ingredient.name %><%= link_to "Delete", dose_path(dose), method: :delete %></li>
-    <% end %>
-  </ol>
-<% end %>
+<div class="navbar">
+  <div class="container">
+    <h1><%= @cocktail.name %></h1>
+  </div>
+</div>
 
-<%= link_to "Cocktails", root_path  %>
-<%= link_to "Add a new dose", new_cocktail_dose_path(@cocktail)  %>
+<div class="container">
+  <div class="row home-button">
+    <%= link_to "Back to Cocktails", root_path, class: "btn btn-warning" %>
+  </div>
+
+  <div class="image-doses">
+
+    <% image_path = "#{@cocktail.name.split[0].downcase}_#{@cocktail.name.split[1].downcase}.png" %>
+    <div class="cocktail-show">
+      <% if FileTest.exist?("./app/assets/images/#{image_path}") %>
+        <%= image_tag image_path, alt: "Cocktail" %>
+      <% else %>
+        <%= image_tag "pisco_sour.png", alt: "Cocktail" %>
+      <% end %>
+    </div>
+
+    <div class="doses">
+      <% unless @cocktail.doses.nil? %>
+        <ol>
+          <% @cocktail.doses.each do |dose| %>
+            <li><%= dose.description %> of <%= dose.ingredient.name %>
+                <%= link_to dose_path(dose), method: :delete do %>
+                  <i class="far fa-trash-alt"></i>
+                <% end %>
+            </li>
+          <% end %>
+        </ol>
+      <% end %>
+    </div>
+
+    <%= link_to "Add a new dose", new_cocktail_dose_path(@cocktail), class: "btn btn-warning add-button" %>
+
+  </div>
+</div>
+
+
+

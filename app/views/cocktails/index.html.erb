@@ -11,7 +11,12 @@
       <div class="card-cocktail">
         <%= link_to cocktail_path(cocktail) do %>
           <h2 class="centered"><%= cocktail.name %></h2>
-          <%= image_tag "#{cocktail.name.split[0].downcase}_#{cocktail.name.split[1].downcase}.png", alt: "Cocktail" %>
+          <% image_path = "#{cocktail.name.split[0].downcase}_#{cocktail.name.split[1].downcase}.png" %>
+          <% if FileTest.exist?("./app/assets/images/#{image_path}") %>
+            <%= image_tag image_path, alt: "Cocktail" %>
+          <% else %>
+            <%= image_tag "pisco_sour.png", alt: "Cocktail" %>
+          <% end %>
         <% end %>
       </div>
     <% end %>
