@@ -15,7 +15,7 @@
           <% when 1 then image_path = "#{cocktail.name.split[0].downcase}.png" %>
           <% when 2 then image_path = "#{cocktail.name.split[0].downcase}_#{cocktail.name.split[1].downcase}.png" %>
           <% when 3 then image_path = "#{cocktail.name.split[0].downcase}_#{cocktail.name.split[1].downcase}_#{cocktail.name.split[2].downcase}.png" %>
-          <% when 4 then image_path = "#{@cocktail.name.split[0].downcase}_#{@cocktail.name.split[1].downcase}_#{@cocktail.name.split[2].downcase}_#{@cocktail.name.split[3].downcase}.png" %>
+          <% when 4 then image_path = "#{cocktail.name.split[0].downcase}_#{cocktail.name.split[1].downcase}_#{cocktail.name.split[2].downcase}_#{cocktail.name.split[3].downcase}.png" %>
           <% end %>
           <% if FileTest.exist?("./app/assets/images/#{image_path}") %>
             <%= image_tag image_path, alt: "Cocktail" %>
