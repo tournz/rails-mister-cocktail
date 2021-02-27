@@ -11,7 +11,11 @@
 
   <div class="image-doses">
 
-    <% image_path = "#{@cocktail.name.split[0].downcase}_#{@cocktail.name.split[1].downcase}.png" %>
+    <% case cocktail.name.split.length %>
+      <% when 1 then image_path = "#{cocktail.name.downcase}.png" %>
+      <% when 2 then image_path = "#{cocktail.name.split[0].downcase}_#{cocktail.name.split[1].downcase}.png" %>
+      <% when 3 then image_path = "#{cocktail.name.split[0].downcase}_#{cocktail.name.split[1].downcase}_#{cocktail.name.split[2].downcase}.png" %>
+    <% end %>
     <div class="cocktail-show">
       <% if FileTest.exist?("./app/assets/images/#{image_path}") %>
         <%= image_tag image_path, alt: "Cocktail" %>
