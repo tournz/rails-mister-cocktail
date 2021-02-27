@@ -12,7 +12,7 @@
   <div class="image-doses">
 
     <% case cocktail.name.split.length %>
-      <% when 1 then image_path = "#{cocktail.name.downcase}.png" %>
+      <% when 1 then image_path = "#{cocktail.name.split[0].downcase}.png" %>
       <% when 2 then image_path = "#{cocktail.name.split[0].downcase}_#{cocktail.name.split[1].downcase}.png" %>
       <% when 3 then image_path = "#{cocktail.name.split[0].downcase}_#{cocktail.name.split[1].downcase}_#{cocktail.name.split[2].downcase}.png" %>
     <% end %>
